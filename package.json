@@ -1,0 +1,54 @@
+{
+  "name": "spotify-wrapper",
+  "version": "1.0.0",
+  "description": "A wrapper to work with Sporify Web API",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint src/*.js",
+    "start": "./node_modules/.bin/webpack-dev-server --inline --open",
+    "dev": "./node_modules/.bin/webpack --progress",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --progress",
+    "watch": "npm run build -- --watch",
+    "prepush": "npm run lint && npm run test:coverage",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
+    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": ["text", "html"],
+    "exclude": ["tests/**"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nunofreitasbotelho/spotify-wrapper.git"
+  },
+  "keywords": [
+    "js",
+    "tdd",
+    "library"
+  ],
+  "author": "Nuno Freitas Botelho <nunofreitasbotelho@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nunofreitasbotelho/spotify-wrapper/issues"
+  },
+  "homepage": "https://github.com/nunofreitasbotelho/spotify-wrapper#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-register": "^6.24.1",
+    "chai": "^4.0.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.6.1",
+    "husky": "^0.14.1",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  }
+}
