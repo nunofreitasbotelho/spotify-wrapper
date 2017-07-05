@@ -21,4 +21,4 @@ module.exports = {
   getAlbum,
   getAlbums,
   getAlbumTracks,
-}
+};
