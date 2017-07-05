@@ -20,7 +20,7 @@ This library depends on [fetch](https://fetch.spec.whatwg.org/) to make requests
 ## Installation
 
 ```sh
-$ npm install spotify-wrapper --save
+$ npm install spotify-wrapper-nfb --save
 ```
 
 ## How to use
