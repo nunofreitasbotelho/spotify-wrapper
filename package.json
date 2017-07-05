@@ -1,14 +1,16 @@
 {
   "name": "spotify-wrapper",
   "version": "1.0.0",
-  "description": "A wrapper to work with Sporify Web API",
-  "main": "index.js",
+  "description": "A wrapper to work with Spotify Web API",
+  "main": "src/index.js",
   "scripts": {
+    "clear": "rimraf lib",
     "lint": "./node_modules/.bin/eslint src/*.js",
-    "start": "./node_modules/.bin/webpack-dev-server --inline --open",
-    "dev": "./node_modules/.bin/webpack --progress",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --progress",
-    "watch": "npm run build -- --watch",
+    "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
+    "build:watch": "npm run build -- --watch",
+    "build:umd": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.js",
+    "build:umd:min": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.min.js -p",
+    "build:all": "npm run build && npm run build:umd && npm run build:umd:min",
     "prepush": "npm run lint && npm run test:coverage",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
     "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
@@ -18,8 +20,13 @@
     "functions": 80,
     "lines": 80,
     "check-coverage": true,
-    "reporter": ["text", "html"],
-    "exclude": ["tests/**"]
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
   },
   "repository": {
     "type": "git",
@@ -37,6 +44,7 @@
   },
   "homepage": "https://github.com/nunofreitasbotelho/spotify-wrapper#readme",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.5.2",
@@ -44,11 +52,17 @@
     "chai": "^4.0.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-chai-friendly": "^0.3.6",
     "eslint-plugin-import": "^2.6.1",
     "husky": "^0.14.1",
     "mocha": "^3.4.2",
+    "node-fetch": "^1.7.1",
     "nyc": "^11.0.3",
-    "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
-  }
+    "rimraf": "^2.6.1",
+    "sinon": "^2.3.6",
+    "sinon-chai": "^2.11.0",
+    "sinon-stub-promise": "^4.0.0",
+    "webpack": "^3.0.0"
+  },
+  "dependencies": {}
 }
