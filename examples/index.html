@@ -11,11 +11,11 @@
 <script src="../dist/spotify-wrapper.umd.js"></script>
 
 <script>
-  const spotify = new SpotifyWrapper({
+  const spotify = new spotifyWrapper({
     token: 'BQA-Uh_G70MwKgzh0Z_MRA85Geb_GQy5QVyHFzGVb91TlpLu8A763oEa25YHS55XPNXZrPxAF68dxUBED9GXGBv3Jc4xk8VFVqVQ6uQ45Apw6GkxRK_BiyDOPazKFPQfSrz8dibNKMwS0Bh_NGFgag',
   })
 
-  const albums = spotify.search.albums('Incubus');
+  const albums = spotify.search.albums('Sam The Kid');
   const albumsEl = document.getElementById('albums');
 
   albums
